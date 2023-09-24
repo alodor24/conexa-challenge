@@ -4,7 +4,7 @@ const theme = {
   colors: {
     black: ["#000"],
     white: ["#fff"],
-    grey: ["#263238"],
+    grey: ["#263238", "#b0bec5"],
   },
   transition: ["all ease-in-out .3s"],
 };
