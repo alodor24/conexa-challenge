@@ -1,7 +1,9 @@
-export const metadata = {
-  title: "Rick and Morty | Conexa Challenge",
-  description: "Challenge para optar a cargo como developer frontend en conexa",
-};
+"use client";
+
+import StyledComponentsRegistry from "@/lib/registry";
+import GlobalStyles from "@/styles/globalStyles";
+import { ThemeProvider } from "styled-components";
+import theme from "@/styles/theme";
 
 export default function RootLayout({
   children,
@@ -10,8 +12,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        <meta
+          name="description"
+          content="Challenge para optar a cargo como developer frontend en conexa"
+        ></meta>
+        <meta name="author" content="José Alejandro Méndez"></meta>
+        <title>Rick and Morty | Conexa Challenge</title>
+      </head>
       <body>
-        <main>{children}</main>
+        <main>
+          <StyledComponentsRegistry>
+            <GlobalStyles />
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          </StyledComponentsRegistry>
+        </main>
       </body>
     </html>
   );
