@@ -1,5 +1,6 @@
 "use client";
 
+import Box from "../Box";
 import * as SC from "./DataGrid.styles";
 
 const DataGrid = () => {
@@ -12,14 +13,14 @@ const DataGrid = () => {
       </SC.Subtitle>
 
       <SC.GridWrapper>
-        <SC.Box>Recuadro 1</SC.Box>
-        <SC.Box>Recuadro 2</SC.Box>
+        <Box>Recuadro 1</Box>
+        <Box>Recuadro 2</Box>
       </SC.GridWrapper>
 
       <SC.GridWrapper $columns={3}>
-        <SC.Box>Recuadro 1</SC.Box>
-        <SC.Box>Recuadro 2</SC.Box>
-        <SC.Box>Recuadro 3</SC.Box>
+        <Box>Recuadro 1</Box>
+        <Box>Recuadro 2</Box>
+        <Box>Recuadro 3</Box>
       </SC.GridWrapper>
     </>
   );
