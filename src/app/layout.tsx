@@ -3,7 +3,7 @@
 import StyledComponentsRegistry from "@/lib/registry";
 import GlobalStyles from "@/styles/globalStyles";
 import { ThemeProvider } from "styled-components";
-import theme from "@/styles/theme";
+import theme, { roboto } from "@/styles/theme";
 
 export default function RootLayout({
   children,
@@ -20,7 +20,7 @@ export default function RootLayout({
         <meta name="author" content="José Alejandro Méndez"></meta>
         <title>Rick and Morty | Conexa Challenge</title>
       </head>
-      <body>
+      <body className={roboto.className}>
         <main>
           <StyledComponentsRegistry>
             <GlobalStyles />
