@@ -20,6 +20,7 @@ export default function RootLayout({
         <meta name="author" content="José Alejandro Méndez"></meta>
         <title>Rick and Morty | Conexa Challenge</title>
       </head>
+
       <body className={roboto.className}>
         <main>
           <StyledComponentsRegistry>
