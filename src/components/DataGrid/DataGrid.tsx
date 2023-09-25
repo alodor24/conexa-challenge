@@ -20,9 +20,35 @@ const DataGrid = () => {
       </SC.GridWrapper>
 
       <SC.GridWrapper $columns={3}>
-        <Box title="Personaje #1 - Solo Episodios">Recuadro 1</Box>
-        <Box title="Personaje #1 & #2 - Episodios Compartidos">Recuadro 2</Box>
-        <Box title="Personaje #2 - Solo Episodios">Recuadro 3</Box>
+        <Box title="Personaje #1 - Solo Episodios">
+          <SC.List>
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <li key={index}>
+                <b>episodio</b> - nombre - <i>fecha de transmisión</i>
+              </li>
+            ))}
+          </SC.List>
+        </Box>
+
+        <Box title="Personaje #1 & #2 - Episodios Compartidos">
+          <SC.List>
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <li key={index}>
+                <b>episodio</b> - nombre - <i>fecha de transmisión</i>
+              </li>
+            ))}
+          </SC.List>
+        </Box>
+
+        <Box title="Personaje #2 - Solo Episodios">
+          <SC.List>
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <li key={index}>
+                <b>episodio</b> - nombre - <i>fecha de transmisión</i>
+              </li>
+            ))}
+          </SC.List>
+        </Box>
       </SC.GridWrapper>
     </>
   );

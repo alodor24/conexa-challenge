@@ -20,3 +20,11 @@ export const GridWrapper = styled.section<{ $columns?: number }>`
     grid-template-columns: 1fr;
   }
 `;
+
+export const List = styled.ul`
+  margin-left: 1rem;
+
+  li:not(li:last-child) {
+    margin-bottom: 0.5rem;
+  }
+`;
