@@ -16,7 +16,7 @@ export const GridWrapper = styled.section<{ $columns?: number }>`
   grid-template-columns: repeat(${(props) => props.$columns || 2}, 1fr);
   gap: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 820px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -33,6 +33,12 @@ export const GridCard = styled.div`
 
 export const List = styled.ul`
   margin-left: 1rem;
+
+  li,
+  b,
+  i {
+    color: ${(props) => props.theme.colors.grey[1]};
+  }
 
   li:not(li:last-child) {
     margin-bottom: 0.5rem;

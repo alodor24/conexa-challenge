@@ -17,7 +17,12 @@ const DataGrid = () => {
         <Box title="Personaje #1">
           <SC.GridCard>
             {[1, 2, 3, 4, 5, 6].map((index) => (
-              <Card key={index} />
+              <Card
+                key={index}
+                name="General Store Owner"
+                status="alive"
+                specie="Alien"
+              />
             ))}
           </SC.GridCard>
         </Box>
@@ -25,7 +30,12 @@ const DataGrid = () => {
         <Box title="Personaje #2" align="right">
           <SC.GridCard>
             {[1, 2, 3, 4, 5, 6].map((index) => (
-              <Card key={index} />
+              <Card
+                key={index}
+                name="Scarecrow Morty"
+                status="dead"
+                specie="Robot"
+              />
             ))}
           </SC.GridCard>
         </Box>

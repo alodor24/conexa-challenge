@@ -8,7 +8,13 @@ const Hero = () => {
   return (
     <SC.Wrapper>
       <SC.WrapperImage>
-        <Image src={Logo} fill priority={true} alt="Rick and Morty logo" />
+        <Image
+          src={Logo}
+          fill
+          priority={true}
+          sizes="100"
+          alt="Rick and Morty logo"
+        />
       </SC.WrapperImage>
     </SC.Wrapper>
   );
