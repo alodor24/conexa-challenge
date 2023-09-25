@@ -13,14 +13,16 @@ const DataGrid = () => {
       </SC.Subtitle>
 
       <SC.GridWrapper>
-        <Box>Recuadro 1</Box>
-        <Box>Recuadro 2</Box>
+        <Box title="Personaje #1">h</Box>
+        <Box title="Personaje #2" align="right">
+          h
+        </Box>
       </SC.GridWrapper>
 
       <SC.GridWrapper $columns={3}>
-        <Box>Recuadro 1</Box>
-        <Box>Recuadro 2</Box>
-        <Box>Recuadro 3</Box>
+        <Box title="Personaje #1 - Solo Episodios">Recuadro 1</Box>
+        <Box title="Personaje #1 & #2 - Episodios Compartidos">Recuadro 2</Box>
+        <Box title="Personaje #2 - Solo Episodios">Recuadro 3</Box>
       </SC.GridWrapper>
     </>
   );
