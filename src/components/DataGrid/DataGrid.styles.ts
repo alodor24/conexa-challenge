@@ -21,6 +21,16 @@ export const GridWrapper = styled.section<{ $columns?: number }>`
   }
 `;
 
+export const GridCard = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 468px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
 export const List = styled.ul`
   margin-left: 1rem;
 

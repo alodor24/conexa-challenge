@@ -1,21 +1,33 @@
 "use client";
 
 import Box from "../Box";
+import Card from "../Card";
 import * as SC from "./DataGrid.styles";
 
 const DataGrid = () => {
   return (
     <>
-      <SC.Title>¿Qué tanto conoces sobre la serie animada?</SC.Title>
+      <SC.Title>¿Qué tanto conocés sobre la serie animada?</SC.Title>
       <SC.Subtitle>
         Elegí un personaje del recuadro 1 y recuadro 2 para tener más
         información de los personajes
       </SC.Subtitle>
 
       <SC.GridWrapper>
-        <Box title="Personaje #1">h</Box>
+        <Box title="Personaje #1">
+          <SC.GridCard>
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <Card key={index} />
+            ))}
+          </SC.GridCard>
+        </Box>
+
         <Box title="Personaje #2" align="right">
-          h
+          <SC.GridCard>
+            {[1, 2, 3, 4, 5, 6].map((index) => (
+              <Card key={index} />
+            ))}
+          </SC.GridCard>
         </Box>
       </SC.GridWrapper>
 
