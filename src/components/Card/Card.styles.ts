@@ -46,9 +46,11 @@ export const Status = styled.span<{ $status?: string }>`
   margin-right: 5px;
   border-radius: 50%;
   background-color: ${(props) =>
-    props.$status === "alive"
+    props.$status === "Alive"
       ? props.theme.colors.green[0]
-      : props.theme.colors.red[0]};
+      : props.$status === "Dead"
+      ? props.theme.colors.red[0]
+      : props.theme.colors.orange[0]};
 `;
 
 export const Detail = styled.p`

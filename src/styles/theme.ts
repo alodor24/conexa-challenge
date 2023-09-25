@@ -7,6 +7,7 @@ const theme = {
     grey: ["#263238", "#b0bec5", "#455a64"],
     green: ["#64dd17"],
     red: ["#b71c1c"],
+    orange: ["#e65100"],
   },
   transition: ["all ease-in-out .3s"],
   boxShadow: [

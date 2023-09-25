@@ -1,10 +1,22 @@
 "use client";
 
+import useGetAllCharacters from "@/hooks/useGetAllCharacters";
 import Box from "../Box";
 import Card from "../Card";
 import * as SC from "./DataGrid.styles";
+import { EndpointEnum } from "@/constants";
 
 const DataGrid = () => {
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${EndpointEnum.CHARACTER}`;
+
+  const {
+    data: dataCharacter,
+    loading,
+    error,
+  } = useGetAllCharacters({
+    url,
+  });
+
   return (
     <>
       <SC.Title>¿Qué tanto conocés sobre la serie animada?</SC.Title>
@@ -15,29 +27,43 @@ const DataGrid = () => {
 
       <SC.GridWrapper>
         <Box title="Personaje #1">
-          <SC.GridCard>
-            {[1, 2, 3, 4, 5, 6].map((index) => (
-              <Card
-                key={index}
-                name="General Store Owner"
-                status="alive"
-                specie="Alien"
-              />
-            ))}
-          </SC.GridCard>
+          {!loading ? (
+            <SC.GridCard>
+              {dataCharacter &&
+                dataCharacter.results
+                  .slice(0, 10)
+                  .map((item) => (
+                    <Card
+                      key={item.id}
+                      name={item.name}
+                      status={item.status}
+                      specie={item.species}
+                    />
+                  ))}
+            </SC.GridCard>
+          ) : (
+            <p>Loading...!!</p>
+          )}
         </Box>
 
         <Box title="Personaje #2" align="right">
-          <SC.GridCard>
-            {[1, 2, 3, 4, 5, 6].map((index) => (
-              <Card
-                key={index}
-                name="Scarecrow Morty"
-                status="dead"
-                specie="Robot"
-              />
-            ))}
-          </SC.GridCard>
+          {!loading ? (
+            <SC.GridCard>
+              {dataCharacter &&
+                dataCharacter.results
+                  .slice(10)
+                  .map((item) => (
+                    <Card
+                      key={item.id}
+                      name={item.name}
+                      status={item.status}
+                      specie={item.species}
+                    />
+                  ))}
+            </SC.GridCard>
+          ) : (
+            <p>Loading...!!</p>
+          )}
         </Box>
       </SC.GridWrapper>
 
