@@ -5,6 +5,7 @@ import Box from "../Box";
 import Card from "../Card";
 import * as SC from "./DataGrid.styles";
 import { EndpointEnum } from "@/constants";
+import { toUpperCaseFirstLetter } from "@/utils/help";
 
 const DataGrid = () => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${EndpointEnum.CHARACTER}`;
@@ -36,8 +37,9 @@ const DataGrid = () => {
                     <Card
                       key={item.id}
                       name={item.name}
-                      status={item.status}
+                      status={toUpperCaseFirstLetter(item.status)}
                       specie={item.species}
+                      image={item.image}
                     />
                   ))}
             </SC.GridCard>
@@ -56,8 +58,9 @@ const DataGrid = () => {
                     <Card
                       key={item.id}
                       name={item.name}
-                      status={item.status}
+                      status={toUpperCaseFirstLetter(item.status)}
                       specie={item.species}
+                      image={item.image}
                     />
                   ))}
             </SC.GridCard>
