@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { useState } from "react";
 import { SectionCharacterEnum } from "@/constants";
+import useGetMultipleCharacters from "@/hooks/useGetMultipleCharacters";
 
 const DataGrid = () => {
   const { url } = useSelector((state: RootState) => state.pagination);
@@ -24,6 +25,11 @@ const DataGrid = () => {
     error,
   } = useGetAllCharacters({
     url,
+  });
+
+  const { data: dataMultipleCharacters } = useGetMultipleCharacters({
+    character1: multiCharacter.character1,
+    character2: multiCharacter.character2,
   });
 
   const handleSelectCharacter = (id: number, section: string) => {
