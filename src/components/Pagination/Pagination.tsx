@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import * as SC from "./Pagination.styles";
+import { useDispatch } from "react-redux";
+import { setPaginationUrl } from "@/reducers/paginationReducer";
 
 type Props = {
   nextPage?: string | null;
@@ -9,6 +11,8 @@ type Props = {
 };
 
 const Pagination: React.FC<Props> = ({ nextPage, prevPage }) => {
+  const dispatch = useDispatch();
+
   const [statusPagination, setStatusPagination] = useState({
     next: nextPage,
     prev: prevPage,
@@ -18,11 +22,13 @@ const Pagination: React.FC<Props> = ({ nextPage, prevPage }) => {
   const isDisabledNextButton = statusPagination.next === null ? true : false;
 
   const handlePrevPage = () => {
-    console.log(statusPagination.prev);
+    if (statusPagination.prev)
+      dispatch(setPaginationUrl(statusPagination.prev));
   };
 
   const handleNextPage = () => {
-    console.log(statusPagination.next);
+    if (statusPagination.next)
+      dispatch(setPaginationUrl(statusPagination.next));
   };
 
   useEffect(() => {

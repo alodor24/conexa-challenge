@@ -5,11 +5,12 @@ import Box from "../Box";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import * as SC from "./DataGrid.styles";
-import { EndpointEnum } from "@/constants";
 import { toUpperCaseFirstLetter } from "@/utils/help";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 const DataGrid = () => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/${EndpointEnum.CHARACTER}`;
+  const { url } = useSelector((state: RootState) => state.pagination);
 
   const {
     data: dataCharacter,

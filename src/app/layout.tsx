@@ -4,6 +4,8 @@ import StyledComponentsRegistry from "@/lib/registry";
 import GlobalStyles from "@/styles/globalStyles";
 import { ThemeProvider } from "styled-components";
 import theme, { roboto } from "@/styles/theme";
+import store from "@/store";
+import { Provider } from "react-redux";
 
 export default function RootLayout({
   children,
@@ -25,7 +27,9 @@ export default function RootLayout({
         <main>
           <StyledComponentsRegistry>
             <GlobalStyles />
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            <ThemeProvider theme={theme}>
+              <Provider store={store}>{children}</Provider>
+            </ThemeProvider>
           </StyledComponentsRegistry>
         </main>
       </body>
