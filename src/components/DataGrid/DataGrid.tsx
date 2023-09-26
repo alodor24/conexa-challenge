@@ -3,6 +3,7 @@
 import useGetAllCharacters from "@/hooks/useGetAllCharacters";
 import Box from "../Box";
 import Card from "../Card";
+import Pagination from "../Pagination";
 import * as SC from "./DataGrid.styles";
 import { EndpointEnum } from "@/constants";
 import { toUpperCaseFirstLetter } from "@/utils/help";
@@ -69,6 +70,13 @@ const DataGrid = () => {
           )}
         </Box>
       </SC.GridWrapper>
+
+      {dataCharacter && (
+        <Pagination
+          nextPage={dataCharacter?.info.next}
+          prevPage={dataCharacter?.info.prev}
+        />
+      )}
 
       <SC.GridWrapper $columns={3}>
         <Box title="Personaje #1 - Solo Episodios">

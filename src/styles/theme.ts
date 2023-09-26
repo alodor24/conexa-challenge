@@ -3,11 +3,12 @@ import { Roboto } from "next/font/google";
 const theme = {
   colors: {
     black: ["#000"],
-    white: ["#fff"],
+    white: ["#fff", "rgba(255, 255, 255, 0.2)"],
     grey: ["#263238", "#b0bec5", "#455a64"],
     green: ["#64dd17"],
     red: ["#b71c1c"],
     orange: ["#e65100"],
+    cyan: ["#18ffff"],
   },
   transition: ["all ease-in-out .3s"],
   boxShadow: [
