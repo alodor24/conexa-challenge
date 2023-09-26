@@ -8,9 +8,15 @@ import * as SC from "./DataGrid.styles";
 import { toUpperCaseFirstLetter } from "@/utils/help";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
+import { useState } from "react";
+import { SectionCharacterEnum } from "@/constants";
 
 const DataGrid = () => {
   const { url } = useSelector((state: RootState) => state.pagination);
+  const [multiCharacter, setMultiCharacter] = useState({
+    character1: 0,
+    character2: 0,
+  });
 
   const {
     data: dataCharacter,
@@ -19,6 +25,20 @@ const DataGrid = () => {
   } = useGetAllCharacters({
     url,
   });
+
+  const handleSelectCharacter = (id: number, section: string) => {
+    if (section === SectionCharacterEnum.CHARACTER_1) {
+      setMultiCharacter((prevState) => ({
+        ...prevState,
+        character1: id,
+      }));
+    } else {
+      setMultiCharacter((prevState) => ({
+        ...prevState,
+        character2: id,
+      }));
+    }
+  };
 
   return (
     <>
@@ -42,6 +62,13 @@ const DataGrid = () => {
                       status={toUpperCaseFirstLetter(item.status)}
                       specie={item.species}
                       image={item.image}
+                      isActive={multiCharacter.character1 === item.id && true}
+                      onClick={() =>
+                        handleSelectCharacter(
+                          item.id,
+                          SectionCharacterEnum.CHARACTER_1
+                        )
+                      }
                     />
                   ))}
             </SC.GridCard>
@@ -63,6 +90,13 @@ const DataGrid = () => {
                       status={toUpperCaseFirstLetter(item.status)}
                       specie={item.species}
                       image={item.image}
+                      isActive={multiCharacter.character2 === item.id && true}
+                      onClick={() =>
+                        handleSelectCharacter(
+                          item.id,
+                          SectionCharacterEnum.CHARACTER_2
+                        )
+                      }
                     />
                   ))}
             </SC.GridCard>

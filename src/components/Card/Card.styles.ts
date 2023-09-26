@@ -1,6 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Wrapper = styled.article`
+const Activated = css`
+  box-shadow: ${(props) => props.theme.boxShadow[1]};
+  transform: scale(0.98);
+`;
+
+export const Wrapper = styled.article<{ $isActive?: boolean }>`
   min-height: 7rem;
   background-color: ${(props) => props.theme.colors.grey[2]};
   border-radius: 5px;
@@ -10,9 +15,14 @@ export const Wrapper = styled.article`
   cursor: pointer;
   transition: ${(props) => props.theme.transition[0]};
 
+  ${(props) =>
+    props.$isActive &&
+    css`
+      ${Activated}
+    `};
+
   &:hover {
-    box-shadow: ${(props) => props.theme.boxShadow[1]};
-    transform: scale(0.98);
+    ${Activated}
   }
 `;
 

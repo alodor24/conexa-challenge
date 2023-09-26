@@ -8,11 +8,20 @@ type Props = {
   status: string;
   specie: string;
   image: string;
+  onClick?: () => void;
+  isActive: boolean;
 };
 
-const Card: React.FC<Props> = ({ name, status, specie, image }) => {
+const Card: React.FC<Props> = ({
+  name,
+  status,
+  specie,
+  image,
+  onClick,
+  isActive = false,
+}) => {
   return (
-    <SC.Wrapper>
+    <SC.Wrapper onClick={onClick} $isActive={isActive}>
       <SC.ImageWrapper>
         <Image src={image} fill sizes="100" alt={name} />
       </SC.ImageWrapper>
