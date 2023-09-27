@@ -5,7 +5,7 @@ import Box from "../Box";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import * as SC from "./DataGrid.styles";
-import { toUpperCaseFirstLetter } from "@/utils/help";
+import { getSharedEpisodes, toUpperCaseFirstLetter } from "@/utils/help";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { useState } from "react";
@@ -31,6 +31,9 @@ const DataGrid = () => {
     character1: multiCharacter.character1,
     character2: multiCharacter.character2,
   });
+
+  const sharedEpisodes =
+    dataMultipleCharacters && getSharedEpisodes(dataMultipleCharacters);
 
   const handleSelectCharacter = (id: number, section: string) => {
     if (section === SectionCharacterEnum.CHARACTER_1) {
@@ -119,37 +122,42 @@ const DataGrid = () => {
         />
       )}
 
-      <SC.GridWrapper $columns={3}>
-        <Box title="Personaje #1 - Solo Episodios">
-          <SC.List>
-            {[1, 2, 3, 4, 5, 6].map((index) => (
-              <li key={index}>
-                <b>episodio</b> - nombre - <i>fecha de transmisión</i>
-              </li>
-            ))}
-          </SC.List>
-        </Box>
+      {(dataMultipleCharacters || []).length > 0 && (
+        <SC.GridWrapper $columns={3}>
+          <Box title="Personaje #1 - Solo Episodios">
+            <SC.List>
+              {dataMultipleCharacters?.[0].episode.map((item, index) => (
+                <li key={index}>
+                  {item}
+                  {/* <b>episodio</b> - nombre - <i>fecha de transmisión</i> */}
+                </li>
+              ))}
+            </SC.List>
+          </Box>
 
-        <Box title="Personaje #1 & #2 - Episodios Compartidos">
-          <SC.List>
-            {[1, 2, 3, 4, 5, 6].map((index) => (
-              <li key={index}>
-                <b>episodio</b> - nombre - <i>fecha de transmisión</i>
-              </li>
-            ))}
-          </SC.List>
-        </Box>
+          <Box title="Personaje #1 & #2 - Episodios Compartidos">
+            <SC.List>
+              {sharedEpisodes?.map((item, index) => (
+                <li key={index}>
+                  {/* <b>episodio</b> - nombre - <i>fecha de transmisión</i> */}
+                  {item}
+                </li>
+              ))}
+            </SC.List>
+          </Box>
 
-        <Box title="Personaje #2 - Solo Episodios">
-          <SC.List>
-            {[1, 2, 3, 4, 5, 6].map((index) => (
-              <li key={index}>
-                <b>episodio</b> - nombre - <i>fecha de transmisión</i>
-              </li>
-            ))}
-          </SC.List>
-        </Box>
-      </SC.GridWrapper>
+          <Box title="Personaje #2 - Solo Episodios">
+            <SC.List>
+              {dataMultipleCharacters?.[1].episode.map((item, index) => (
+                <li key={index}>
+                  {item}
+                  {/* <b>episodio</b> - nombre - <i>fecha de transmisión</i> */}
+                </li>
+              ))}
+            </SC.List>
+          </Box>
+        </SC.GridWrapper>
+      )}
     </>
   );
 };
