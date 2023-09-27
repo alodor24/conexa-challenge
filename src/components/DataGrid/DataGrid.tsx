@@ -17,6 +17,7 @@ import { SectionCharacterEnum } from "@/constants";
 import useGetMultipleCharacters from "@/hooks/useGetMultipleCharacters";
 import { Episode } from "@/types";
 import Loader from "../Loader";
+import Error from "../Error";
 
 const DataGrid = () => {
   const { url } = useSelector((state: RootState) => state.pagination);
@@ -82,6 +83,7 @@ const DataGrid = () => {
 
       <SC.GridWrapper>
         <Box title="Personaje #1">
+          {error && <Error />}
           {!loading ? (
             <SC.GridCard>
               {dataCharacter &&
@@ -110,6 +112,7 @@ const DataGrid = () => {
         </Box>
 
         <Box title="Personaje #2" align="right">
+          {error && <Error />}
           {!loading ? (
             <SC.GridCard>
               {dataCharacter &&
