@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Conexa Challenge
 
-## Getting Started
+Prueba técnica desarrollada con las siguientes tecnologías:
 
-First, run the development server:
+- `React`
+- `TypeScript`
+- `Styled-Components`
+- `Redux`
+- `Next`
+- `Jest`
+- `React Testing Library`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Desarrollado por:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+José Alejandro Méndez Sánchez
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pasos para desplegar proyecto en local:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Se debe clonar el proyecto desde el repositorio de GitHub
 
-## Learn More
+1. Crear archivo `.env` en la raíz el proyecto para configurar las variables de entorno
+2. Agregar lo siguiente:
+   - `NEXT_PUBLIC_BASE_URL = https://rickandmortyapi.com/api`
+   - `HOST_NAME = rickandmortyapi.com`
+   - `PATH_NAME = /api/character/avatar/**`
+3. Guardar cambios
 
-To learn more about Next.js, take a look at the following resources:
+#### A continuación
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. En la trminal del proyecto debemos ejecutar los siguientes comandos:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `npm i`
+- `npm run dev`
 
-## Deploy on Vercel
+2. Por defecto el proyecto puede ser visible en el navegador de forma local con el siguiente link: `http://localhost:3000/`
+3. Opcional, si quieres correr los tests debes ejecutar el siguiente comando `npm run test`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Demo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Ver proyecto deployado haciendo click [acá](https://conexa-challenge-phi.vercel.app/)
