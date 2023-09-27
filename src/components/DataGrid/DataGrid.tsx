@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { SectionCharacterEnum } from "@/constants";
 import useGetMultipleCharacters from "@/hooks/useGetMultipleCharacters";
 import { Episode } from "@/types";
+import Loader from "../Loader";
 
 const DataGrid = () => {
   const { url } = useSelector((state: RootState) => state.pagination);
@@ -104,7 +105,7 @@ const DataGrid = () => {
                   ))}
             </SC.GridCard>
           ) : (
-            <p>Loading...!!</p>
+            <Loader />
           )}
         </Box>
 
@@ -132,7 +133,7 @@ const DataGrid = () => {
                   ))}
             </SC.GridCard>
           ) : (
-            <p>Loading...!!</p>
+            <Loader />
           )}
         </Box>
       </SC.GridWrapper>
