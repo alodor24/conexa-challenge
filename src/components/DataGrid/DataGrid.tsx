@@ -5,12 +5,17 @@ import Box from "../Box";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import * as SC from "./DataGrid.styles";
-import { getSharedEpisodes, toUpperCaseFirstLetter } from "@/utils/help";
+import {
+  getEpisodeFromUrls,
+  getSharedEpisodes,
+  toUpperCaseFirstLetter,
+} from "@/utils/help";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SectionCharacterEnum } from "@/constants";
 import useGetMultipleCharacters from "@/hooks/useGetMultipleCharacters";
+import { Episode } from "@/types";
 
 const DataGrid = () => {
   const { url } = useSelector((state: RootState) => state.pagination);
@@ -18,6 +23,9 @@ const DataGrid = () => {
     character1: 0,
     character2: 0,
   });
+  const [episodesCharacter1, setEpisodesCharacter1] = useState<Episode[]>([]);
+  const [episodesCharacter2, setEpisodesCharacter2] = useState<Episode[]>([]);
+  const [episodesShared, setEpisodesShared] = useState<Episode[]>([]);
 
   const {
     data: dataCharacter,
@@ -32,8 +40,22 @@ const DataGrid = () => {
     character2: multiCharacter.character2,
   });
 
-  const sharedEpisodes =
-    dataMultipleCharacters && getSharedEpisodes(dataMultipleCharacters);
+  useEffect(() => {
+    if (dataMultipleCharacters) {
+      getEpisodeFromUrls(dataMultipleCharacters[0].episode).then((data) => {
+        setEpisodesCharacter1(data);
+      });
+
+      getEpisodeFromUrls(dataMultipleCharacters[1].episode).then((data) => {
+        setEpisodesCharacter2(data);
+      });
+
+      const sharedEpisodes = getSharedEpisodes(dataMultipleCharacters);
+      getEpisodeFromUrls(sharedEpisodes).then((data) => {
+        setEpisodesShared(data);
+      });
+    }
+  }, [dataMultipleCharacters]);
 
   const handleSelectCharacter = (id: number, section: string) => {
     if (section === SectionCharacterEnum.CHARACTER_1) {
@@ -126,10 +148,9 @@ const DataGrid = () => {
         <SC.GridWrapper $columns={3}>
           <Box title="Personaje #1 - Solo Episodios">
             <SC.List>
-              {dataMultipleCharacters?.[0].episode.map((item, index) => (
-                <li key={index}>
-                  {item}
-                  {/* <b>episodio</b> - nombre - <i>fecha de transmisión</i> */}
+              {episodesCharacter1.map((item) => (
+                <li key={item.id}>
+                  <b>{item.episode}</b> - {item.name} - <i>{item.air_date}</i>
                 </li>
               ))}
             </SC.List>
@@ -137,10 +158,9 @@ const DataGrid = () => {
 
           <Box title="Personaje #1 & #2 - Episodios Compartidos">
             <SC.List>
-              {sharedEpisodes?.map((item, index) => (
-                <li key={index}>
-                  {/* <b>episodio</b> - nombre - <i>fecha de transmisión</i> */}
-                  {item}
+              {episodesShared.map((item) => (
+                <li key={item.id}>
+                  <b>{item.episode}</b> - {item.name} - <i>{item.air_date}</i>
                 </li>
               ))}
             </SC.List>
@@ -148,10 +168,9 @@ const DataGrid = () => {
 
           <Box title="Personaje #2 - Solo Episodios">
             <SC.List>
-              {dataMultipleCharacters?.[1].episode.map((item, index) => (
-                <li key={index}>
-                  {item}
-                  {/* <b>episodio</b> - nombre - <i>fecha de transmisión</i> */}
+              {episodesCharacter2.map((item) => (
+                <li key={item.id}>
+                  <b>{item.episode}</b> - {item.name} - <i>{item.air_date}</i>
                 </li>
               ))}
             </SC.List>

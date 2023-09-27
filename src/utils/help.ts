@@ -18,3 +18,23 @@ export const getSharedEpisodes = (dataMultipleCharacters: Character[]) => {
 
   return sharedEpisodes;
 };
+
+const getEpisode = async (url: string) => {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Network response was not ok for ${url}`);
+  }
+
+  return response.json();
+};
+
+export const getEpisodeFromUrls = async (urls: string[]) => {
+  try {
+    const fetchDataPromises = urls.map((url) => getEpisode(url));
+    const episodeData = await Promise.all(fetchDataPromises);
+    return episodeData;
+  } catch (error) {
+    throw error;
+  }
+};
