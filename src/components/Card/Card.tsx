@@ -21,7 +21,11 @@ const Card: React.FC<Props> = ({
   isActive = false,
 }) => {
   return (
-    <SC.Wrapper onClick={onClick} $isActive={isActive}>
+    <SC.Wrapper
+      onClick={onClick}
+      $isActive={isActive}
+      data-testid="card-wrapper"
+    >
       <SC.ImageWrapper>
         <Image src={image} fill sizes="100" alt={name} />
       </SC.ImageWrapper>

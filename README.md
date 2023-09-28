@@ -27,7 +27,7 @@ José Alejandro Méndez Sánchez
 
 #### A continuación
 
-1. En la trminal del proyecto debemos ejecutar los siguientes comandos:
+1. En la terminal del proyecto debemos ejecutar los siguientes comandos:
 
 - `npm i`
 - `npm run dev`
